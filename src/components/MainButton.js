@@ -1,11 +1,11 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, Image } from 'react-native';
 
 const MainButton = () => {
     return (
         <View>
             <Image
-                style={{width: 25, height: 25, marginRight: 20}}
+                style={{width: 300, height: 150}}
                 source={require('../assets/slider-track.png')}
             />
         </View>

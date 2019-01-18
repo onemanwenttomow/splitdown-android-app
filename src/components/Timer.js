@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const Timer = ({children}) => {
+const Timer = ({minutes, seconds}) => {
     return (
         <View style={styles.timerContainer}>
-            <Text style={styles.timerText}>{children}</Text>
+            <Text style={styles.timerText}>{minutes}:{seconds}</Text>
         </View>
     )
 }
