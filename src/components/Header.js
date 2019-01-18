@@ -1,11 +1,11 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
 
-const Header = () => {
+const Header = ({headerText}) => {
     return (
         <View style={styles.containerStyle}>
             <Text style={styles.textStyle}>7</Text>
-            <Text style={styles.textStyle}>FIRST HALF</Text>
+            <Text style={styles.textStyle}>{headerText}</Text>
             <Image
                 style={{width: 25, height: 25, marginRight: 20}}
                 source={require('../assets/nostop.png')}
