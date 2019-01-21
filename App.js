@@ -16,6 +16,8 @@ export default class App extends React.Component {
         this.secondsRemaining;
         this.intervalHandle;
         this.startCountDown = this.startCountDown.bind(this);
+        this.restartCountDown = this.restartCountDown.bind(this);
+        this.pauseCountDown = this.pauseCountDown.bind(this);
         this.tick = this.tick.bind(this);
     }
 
@@ -65,6 +67,12 @@ export default class App extends React.Component {
             isClicked : true
         })
     }
+    pauseCountDown() {
+        clearInterval(this.intervalHandle);
+    }
+    restartCountDown() {
+        this.intervalHandle = setInterval(this.tick, 1000);
+    }
     render() {
         return (
               <View style={styles.container}>
@@ -73,6 +81,8 @@ export default class App extends React.Component {
                     <Timer minutes={this.state.minutes} seconds={this.state.seconds}/>
                     <MainButton />
                     <Text onPress={this.startCountDown} style={styles.containerText}>Splitdown App</Text>
+                    <Text onPress={this.pauseCountDown} style={styles.containerText}>Pause</Text>
+                    <Text onPress={this.restartCountDown} style={styles.containerText}>Restart</Text>
               </View>
         );
     }
