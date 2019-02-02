@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ProgressBarAndroid } from 'react-native';
 import Header from './src/components/Header';
 import Timer from './src/components/Timer';
 import MainButton from './src/components/MainButton';
@@ -11,7 +11,8 @@ export default class App extends React.Component {
             minutes: '07',
             seconds: '00',
             headerText: 'READY',
-            isClicked: false
+            isClicked: false,
+            progressBar: 0
         }
         this.secondsRemaining;
         this.intervalHandle;
@@ -24,6 +25,8 @@ export default class App extends React.Component {
     tick() {
         let min = Math.floor(this.secondsRemaining / 60);
         let sec = this.secondsRemaining - (min * 60);
+        this.setState({ progressBar:  this.secondsRemaining/ (7 * 60) })
+
         console.log("min: ", min);
         console.log("sec: ", sec);
 
@@ -76,9 +79,17 @@ export default class App extends React.Component {
     render() {
         return (
               <View style={styles.container}>
-                    <Header headerText={this.state.headerText}>
-                    </Header>
-                    <Timer minutes={this.state.minutes} seconds={this.state.seconds}/>
+                    <Header headerText={this.state.headerText} />
+
+                    <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
+
+                    <ProgressBarAndroid
+                        styleAttr="Horizontal"
+                        indeterminate={false}
+                        color="#00ccfe"
+                        progress={1 - this.state.progressBar}
+                    />
+
                     <MainButton />
                     <Text onPress={this.startCountDown} style={styles.containerText}>Splitdown App</Text>
                     <Text onPress={this.pauseCountDown} style={styles.containerText}>Pause</Text>
@@ -89,11 +100,14 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    color: '#fff',
-  },
-  containerText: {
-      color: '#555'
-  }
+    container: {
+        flex: 1,
+        color: '#fff',
+    },
+    containerText: {
+        color: '#555'
+    },
+    progressBar: {
+        color: '#00ccfe'
+    }
 });
