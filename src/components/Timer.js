@@ -12,7 +12,7 @@ const Timer = ({minutes, seconds}) => {
 const styles = {
     timerContainer: {
         backgroundColor: '#555555',
-        height: 200,
+        height: 170,
         justifyContent: 'space-between',
         alignItems: 'center',
         flexDirection: 'column',

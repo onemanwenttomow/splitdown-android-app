@@ -27,9 +27,6 @@ export default class App extends React.Component {
         let sec = this.secondsRemaining - (min * 60);
         this.setState({ progressBar:  this.secondsRemaining/ (7 * 60) })
 
-        console.log("min: ", min);
-        console.log("sec: ", sec);
-
         this.setState({
           minutes: min,
           seconds: sec,
@@ -82,15 +79,17 @@ export default class App extends React.Component {
                     <Header headerText={this.state.headerText} />
 
                     <Timer minutes={this.state.minutes} seconds={this.state.seconds} />
-
-                    <ProgressBarAndroid
-                        styleAttr="Horizontal"
-                        indeterminate={false}
-                        color="#00ccfe"
-                        progress={1 - this.state.progressBar}
-                    />
+                    <View style={styles.progressBar}>
+                        <ProgressBarAndroid
+                            styleAttr="Horizontal"
+                            indeterminate={false}
+                            color="#00ccfe"
+                            progress={1 - this.state.progressBar}
+                        />
+                    </View>
 
                     <MainButton />
+
                     <Text onPress={this.startCountDown} style={styles.containerText}>Splitdown App</Text>
                     <Text onPress={this.pauseCountDown} style={styles.containerText}>Pause</Text>
                     <Text onPress={this.restartCountDown} style={styles.containerText}>Restart</Text>
@@ -108,6 +107,10 @@ const styles = StyleSheet.create({
         color: '#555'
     },
     progressBar: {
-        color: '#00ccfe'
+        backgroundColor: '#555555',
+        paddingLeft: 20,
+        paddingRight: 20,
+        marginBottom: 20,
+        transform: [{ scaleX: 1.0 }, { scaleY: 3.5 }],
     }
 });

@@ -1,15 +1,27 @@
 import React from 'react';
-import { Text, View, Image } from 'react-native';
+import { View, Image, Switch } from 'react-native';
 
 const MainButton = () => {
     return (
-        <View>
-            <Image
-                style={{width: 300, height: 150}}
-                source={require('../assets/slider-track.png')}
+        <View style={styles.container}>
+            <Switch
+                trackColor = '#d9d9d9'
             />
+
         </View>
     )
+}
+
+const styles = {
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        marginTop: 100
+    },
+    rockerBackground: {
+        width: 190,
+        height: 59
+    }
 }
 
 export default MainButton;

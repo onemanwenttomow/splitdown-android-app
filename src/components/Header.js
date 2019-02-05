@@ -17,7 +17,7 @@ const Header = ({headerText}) => {
 const styles = {
     containerStyle: {
         backgroundColor: '#555555',
-        height: 90,
+        height: 80,
         paddingTop: 30,
         justifyContent: 'space-between',
         alignItems: 'center',
