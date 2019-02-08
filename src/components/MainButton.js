@@ -1,26 +1,52 @@
 import React from 'react';
-import { View, Image, Switch } from 'react-native';
+import { View, Text } from 'react-native';
+import Draggable from 'react-native-draggable';
 
-const MainButton = () => {
-    return (
-        <View style={styles.container}>
-            <Switch
-                trackColor = '#d9d9d9'
-            />
+class MainButton extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            buttonText: '>> slide to start',
+        }
+        this.changeButtonText = this.changeButtonText.bind(this)
+    }
+    changeButtonText() {
+        this.setState({
+            buttonText: 'slide to pause <<'
+        })
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                    <Draggable renderShape='image' imageSource={require('../assets/playbutton.png')} renderSize={100}
+                        offsetX={-80} offsetY={-196}
+                        longPressDrag={this.changeButtonText}
+                        pressDrag={()=> this.changeButtonText }
+                        pressInDrag={this.changeButtonText}
+                        pressOutDrag={this.changeButtonText}
+                    />
+                    <Text style={styles.textStyle}> {this.state.buttonText}</Text>
+            </View>
+        )
+    }
 
-        </View>
-    )
 }
 
 const styles = {
     container: {
         flex: 1,
-        alignItems: 'center',
-        marginTop: 100
+        backgroundColor: "#d9d9d9",
+        marginLeft: 20,
+        marginRight: 20,
+        marginTop: 10,
+        marginBottom: 140,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center'
     },
-    rockerBackground: {
-        width: 190,
-        height: 59
+    textStyle: {
+        color: '#555555',
+        fontSize: 17,
     }
 }
 

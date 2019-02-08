@@ -88,7 +88,7 @@ export default class App extends React.Component {
                         />
                     </View>
 
-                    <MainButton />
+                    <MainButton startCountDown={this.startCountDown}/>
 
                     <Text onPress={this.startCountDown} style={styles.containerText}>Splitdown App</Text>
                     <Text onPress={this.pauseCountDown} style={styles.containerText}>Pause</Text>
